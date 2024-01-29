@@ -1,5 +1,4 @@
 import curses
-from typing import Any
 
 class Screen:
 
@@ -12,7 +11,7 @@ class Screen:
         self.Refresh()
         self.WindowObject.getch()
 
-    def UseColour(self, colour_pairs: Any):
+    def UseColour(self, colour_pairs: dict):
         for group_index, group in enumerate(colour_pairs):
             for colour_index, colour in enumerate(group):
                 curses.init_pair(group_index*8+colour_index, *colour)
