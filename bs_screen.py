@@ -17,7 +17,7 @@ class Screen:
     def UseColour(self, colour_pairs: dict):
         for group_index, group in enumerate(colour_pairs.values()):
             for colour_index, colour in enumerate(group.values()):
-                curses.init_pair(group_index*len(group)+colour_index+1, colour[1], colour[0])
+                curses.init_pair(self.Colour(group_index, colour_index), colour[1], colour[0])
 
     def Refresh(self):
         self.WindowObject.refresh()
