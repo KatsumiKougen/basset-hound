@@ -5,6 +5,9 @@ class Screen:
     def __init__(self, window: curses.window):
         self.WindowObject = window
 
+    def Colour(self, bg: int, fg: int) -> int:
+        return bg*8+fg+1
+
     def Start(self):
         self.WindowObject.clear()
         self.PlotRect(1, 1, 3, 3, "a", curses.color_pair(0))
