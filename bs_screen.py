@@ -10,8 +10,6 @@ class Screen:
 
     def Start(self):
         self.WindowObject.clear()
-        self.PlotRect(1, 1, 3, 3, "a", curses.color_pair(0))
-        self.Refresh()
         self.WindowObject.getch()
 
     def UseColour(self, colour_pairs: dict):
