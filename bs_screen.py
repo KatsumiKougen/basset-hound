@@ -12,9 +12,9 @@ class Screen:
         self.WindowObject.getch()
 
     def UseColour(self, colour_pairs: dict):
-        for group_index, group in enumerate(colour_pairs):
-            for colour_index, colour in enumerate(group):
-                curses.init_pair(group_index*8+colour_index, *colour)
+        for group_index, group in enumerate(colour_pairs.values()):
+            for colour_index, colour in enumerate(group.values()):
+                curses.init_pair(group_index*len(group)+colour_index+1, colour[0], colour[1])
 
     def Refresh(self):
         self.WindowObject.refresh()
