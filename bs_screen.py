@@ -1,4 +1,5 @@
 import curses
+from typing import Any
 
 class Screen:
 
@@ -10,6 +11,9 @@ class Screen:
         self.PlotRect(1, 1, 3, 3, "a", curses.color_pair(0))
         self.Refresh()
         self.WindowObject.getch()
+
+    def UseColour(self, colour_pairs: Any):
+        pass
 
     def Refresh(self):
         self.WindowObject.refresh()
