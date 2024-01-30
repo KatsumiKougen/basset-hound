@@ -21,3 +21,14 @@ Block = {
     "Quad23": "\u259e",
     "Quad234": "\u259f"
 }
+
+Arrow = {
+    "Left": "\u2190",
+    "Up": "\u2191",
+    "Right": "\u2192",
+    "Down": "\u2193",
+    "NorthWest": "\u2196",
+    "NorthEast": "\u2197",
+    "SouthWest": "\u2199",
+    "SouthEast": "\u2198"
+}
