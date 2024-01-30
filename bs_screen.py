@@ -45,6 +45,9 @@ class Screen:
         for y in range(y0, y1+1):
             self.WindowObject.addnstr(y, x0, char, x1-x0, attr)
 
+    def GetChar(self) -> int:
+        return self.WindowObject.getch()
+
 if __name__ == "__main__":
     print(
         f"ncurses version {curses.ncurses_version[0]}.{curses.ncurses_version[1]}\n"
