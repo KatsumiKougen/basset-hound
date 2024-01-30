@@ -39,11 +39,16 @@ class Screen:
         self.WindowObject.addstr(y, x, string, attr)
 
     def PlotRect(
-        self, y0: int, y1: int, x0: int, x1: int,
+        self, y0: int, x0: int, y1: int, x1: int,
         char: str, attr: int = 0
     ):
+        if y0 > y1:
+            y0, y1 = y1, y0
+        if x0 > x1:
+            x0, x1 = x1, x0
         for y in range(y0, y1+1):
-            self.WindowObject.addnstr(y, x0, char, x1-x0, attr)
+            for x in range(x0, x1+1):
+                self.PlotChar(y, x, char, attr)
 
     def GetChar(self) -> int:
         return self.WindowObject.getch()
