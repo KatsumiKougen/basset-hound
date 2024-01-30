@@ -8,13 +8,14 @@ class Screen:
     def InitScreen(self):
         curses.noecho()
         curses.cbreak()
-        screen.WindowObject.keypad(True)
+        self.WindowObject.keypad(True)
         curses.start_color()
+        curses.curs_set(0)
 
     def TerminateScreen(self):
         curses.echo()
         curses.nocbreak()
-        screen.WindowObject.keypad(False)
+        self.WindowObject.keypad(False)
         curses.endwin()
 
     def Colour(self, bg: int, fg: int) -> int:
