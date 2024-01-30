@@ -33,6 +33,9 @@ class Screen:
     def Refresh(self):
         self.WindowObject.refresh()
 
+    def SetBackground(self, bg: int, fg: int = 7, char: str = "\0"):
+        self.WindowObject.bkgd(char, self.ColourPair(bg, fg))
+
     def PlotChar(self, y: int, x: int, char: str, attr: int = 0):
         self.WindowObject.addch(y, x, char, attr)
 
