@@ -5,11 +5,23 @@ class Screen:
     def __init__(self, window: curses.window):
         self.WindowObject = window
 
+    def InitScreen(self):
+        curses.noecho()
+        curses.cbreak()
+        screen.WindowObject.keypad(True)
+        curses.start_color()
+
+    def TerminateScreen(self):
+        curses.echo()
+        curses.nocbreak()
+        screen.WindowObject.keypad(False)
+        curses.endwin()
+
     def Colour(self, bg: int, fg: int) -> int:
         return bg*8+fg+1
 
     def ColourPair(self, bg: int, fg: int) -> int:
-        return curses.colour_pair(self.Colour(bg, fg))
+        return curses.color_pair(self.Colour(bg, fg))
 
     def Start(self):
         self.WindowObject.clear()
@@ -35,18 +47,6 @@ class Screen:
     ):
         for y in range(y0, y1+1):
             self.WindowObject.addnstr(y, x0, char, x1-x0, attr)
-
-def InitScreen(screen: Screen):
-    curses.noecho()
-    curses.cbreak()
-    screen.WindowObject.keypad(True)
-    curses.start_color()
-
-def TerminateScreen(screen: Screen):
-    curses.echo()
-    curses.nocbreak()
-    screen.WindowObject.keypad(False)
-    curses.endwin()
 
 if __name__ == "__main__":
     print(
