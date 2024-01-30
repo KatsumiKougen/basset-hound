@@ -24,10 +24,6 @@ class Screen:
     def ColourPair(self, bg: int, fg: int) -> int:
         return curses.color_pair(self.Colour(bg, fg))
 
-    def Start(self):
-        self.WindowObject.clear()
-        self.WindowObject.getch()
-
     def UseColour(self, colour_pairs: dict):
         for group_index, group in enumerate(colour_pairs.values()):
             for colour_index, colour in enumerate(group.values()):
