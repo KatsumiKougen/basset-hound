@@ -8,6 +8,9 @@ class Screen:
     def Colour(self, bg: int, fg: int) -> int:
         return bg*8+fg+1
 
+    def ColourPair(self, bg: int, fg: int) -> int:
+        return curses.colour_pair(self.Colour(bg, fg))
+
     def Start(self):
         self.WindowObject.clear()
         self.WindowObject.getch()
