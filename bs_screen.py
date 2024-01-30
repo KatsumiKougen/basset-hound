@@ -4,6 +4,7 @@ class Screen:
 
     def __init__(self, window: curses.window):
         self.WindowObject = window
+        self.GlobalBackground: int = 0
 
     def InitScreen(self):
         curses.noecho()
