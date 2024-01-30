@@ -20,7 +20,7 @@ class Screen:
     def Refresh(self):
         self.WindowObject.refresh()
 
-    def PlotCh(self, y: int, x: int, char: str, attr: int = 0):
+    def PlotChar(self, y: int, x: int, char: str, attr: int = 0):
         self.WindowObject.addch(y, x, char, attr)
 
     def PlotStr(self, y: int, x: int, string: str, attr: int = 0):
