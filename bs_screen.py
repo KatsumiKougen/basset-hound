@@ -1,4 +1,5 @@
 import curses
+import bs_char
 
 class Screen:
 
@@ -53,6 +54,17 @@ class Screen:
         for y in range(y0, y1+1):
             for x in range(x0, x1+1):
                 self.PlotChar(y, x, char, attr)
+
+    def PlotBraille(self, y: int, x: int, pattern: int, attr: int = 0):
+        IntToKey = lambda n: \
+            "Dots" \
+            f"{1 if n>>5&1==1 else ''}{2 if n>>4&1==1 else ''}{3 if n>>3&1==1 else ''}" \
+            f"{4 if n>>2&1==1 else ''}{5 if n>>1&1==1 else ''}{6 if n&1==1 else ''}"
+
+        if pattern == 0:
+            self.PlotChar(y, x, bs_char.Braille["Blank"], attr)
+        else:
+            self.PlotChar(y, x, bs_char.Braille[IntToKey(pattern)], attr)
 
     def GetChar(self) -> int:
         return self.WindowObject.getch()
