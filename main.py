@@ -15,17 +15,12 @@ class ApplicationObject:
         self.AppWindow.TerminateScreen()
 
     def DrawIntro(self):
-        ColumnLength = 24
+        ColumnLength = 4*20
         for row in range(32):
-            for cidx, colour in enumerate((1, 3, 2, 4)):
-                for idx, char in enumerate(
-                    [bs_char.Braille["Dots123456"], *list(bs_char.Shade.values())]
-                ):
-                    self.AppWindow.PlotRect(
-                        row, ColumnLength//4*idx+ColumnLength*cidx,
-                        row, ColumnLength//4*(idx+1)-1+ColumnLength*cidx,
-                        char,
-                        self.AppWindow.ColourPair(0, colour)
-                    )
+            for cidx, colour, char in zip(range(4), (1, 3, 2, 4), [0b001100, 0b101010, 0b111101, 0b111111]):
+                self.AppWindow.PlotBrailleRect(
+                    row, ColumnLength//4*cidx, row, ColumnLength//4*(cidx+1)-1, char,
+                    self.AppWindow.ColourPair(0, colour)
+                )
 
 App = ApplicationObject()
