@@ -4,73 +4,67 @@ import bs_char
 class Screen:
 
     def __init__(self, window: curses.window):
-        self.WindowObject = window
-        self.GlobalBackground: int = 0
+        self.windowObject = window
+        self.globalBackground: int = 0
 
-    def InitScreen(self):
+    def initScreen(self):
         curses.noecho()
         curses.cbreak()
-        self.WindowObject.keypad(True)
+        self.windowObject.keypad(True)
         curses.start_color()
         curses.curs_set(0)
 
-    def TerminateScreen(self):
+    def terminateScreen(self):
         curses.echo()
         curses.nocbreak()
-        self.WindowObject.keypad(False)
+        self.windowObject.keypad(False)
         curses.endwin()
 
-    def Colour(self, bg: int, fg: int) -> int:
+    def colour(self, bg: int, fg: int) -> int:
         return bg*8+fg+1
 
-    def ColourPair(self, bg: int, fg: int) -> int:
-        return curses.color_pair(self.Colour(bg, fg))
+    def colourPair(self, bg: int, fg: int) -> int:
+        return curses.color_pair(self.colour(bg, fg))
 
-    def UseColour(self, colour_pairs: dict):
-        for group_index, group in enumerate(colour_pairs.values()):
+    def useColour(self, colourPairs: dict):
+        for group_index, group in enumerate(colourPairs.values()):
             for colour_index, colour in enumerate(group.values()):
-                curses.init_pair(self.Colour(group_index, colour_index), colour[1], colour[0])
+                curses.init_pair(self.colour(group_index, colour_index), colour[1], colour[0])
 
-    def Refresh(self):
-        self.WindowObject.refresh()
+    def refresh(self):
+        self.windowObject.refresh()
 
-    def SetBackground(self, bg: int, fg: int = 7, char: str = "\0"):
-        self.WindowObject.bkgd(char, self.ColourPair(bg, fg))
+    def setBackground(self, bg: int, fg: int = 7, char: str = "\0"):
+        self.windowObject.bkgd(char, self.ColourPair(bg, fg))
 
-    def PlotChar(self, y: int, x: int, char: str, attr: int = 0):
-        self.WindowObject.addch(y, x, char, attr)
+    def plotChar(self, y: int, x: int, char: str, attr: int = 0):
+        self.windowObject.addch(y, x, char, attr)
 
-    def PlotStr(self, y: int, x: int, string: str, attr: int = 0):
-        self.WindowObject.addstr(y, x, string, attr)
+    def plotStr(self, y: int, x: int, string: str, attr: int = 0):
+        self.windowObject.addstr(y, x, string, attr)
 
-    def PlotRect(
-        self, y0: int, x0: int, y1: int, x1: int,
-        char: str, attr: int = 0
-    ):
+    def plotRect(self, y0: int, x0: int, y1: int, x1: int, char: str, attr: int = 0):
         if y0 > y1:
             y0, y1 = y1, y0
         if x0 > x1:
             x0, x1 = x1, x0
         for y in range(y0, y1+1):
             for x in range(x0, x1+1):
-                self.PlotChar(y, x, char, attr)
+                self.plotChar(y, x, char, attr)
 
-    def PlotBraille(self, y: int, x: int, pattern: int, attr: int = 0):
-        IntToKey = lambda n: \
+    def plotBraille(self, y: int, x: int, pattern: int, attr: int = 0):
+        intToKey = lambda n: \
             "Dots" \
             f"{1 if n>>5&1==1 else ''}{2 if n>>4&1==1 else ''}{3 if n>>3&1==1 else ''}" \
             f"{4 if n>>2&1==1 else ''}{5 if n>>1&1==1 else ''}{6 if n&1==1 else ''}"
 
         if pattern == 0:
-            self.PlotChar(y, x, bs_char.Braille["Blank"], attr)
+            self.plotChar(y, x, bs_char.braille["Blank"], attr)
         else:
-            self.PlotChar(y, x, bs_char.Braille[IntToKey(pattern)], attr)
+            self.plotChar(y, x, bs_char.braille[intToKey(pattern)], attr)
 
-    def PlotBrailleRect(
-        self, y0: int, x0: int, y1: int, x1: int,
-        pattern: int, attr: int = 0
-    ):
-        IntToKey = lambda n: \
+    def plotBrailleRect(self, y0: int, x0: int, y1: int, x1: int, pattern: int, attr: int = 0):
+        intToKey = lambda n: \
             "Dots" \
             f"{1 if n>>5&1==1 else ''}{2 if n>>4&1==1 else ''}{3 if n>>3&1==1 else ''}" \
             f"{4 if n>>2&1==1 else ''}{5 if n>>1&1==1 else ''}{6 if n&1==1 else ''}"
@@ -81,10 +75,10 @@ class Screen:
             x0, x1 = x1, x0
         for y in range(y0, y1+1):
             for x in range(x0, x1+1):
-                self.PlotBraille(y, x, pattern, attr)
+                self.plotBraille(y, x, pattern, attr)
 
-    def GetChar(self) -> int:
-        return self.WindowObject.getch()
+    def getChar(self) -> int:
+        return self.windowObject.getch()
 
 if __name__ == "__main__":
     print(

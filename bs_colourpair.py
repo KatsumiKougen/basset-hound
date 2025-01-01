@@ -1,4 +1,4 @@
-ColourPair = {
+colourPair = {
     "black": {
         "black": (0, 0),
         "red": (0, 9),

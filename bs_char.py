@@ -1,10 +1,10 @@
-Shade = {
+shade = {
     "LightShade": "\u2591",
     "MediumShade": "\u2592",
     "DarkShade": "\u2593"
 }
 
-Block = {
+block = {
     "UpperHalf": "\u2580",
     "LowerHalf": "\u2584",
     "LeftHalf": "\u258c",
@@ -23,7 +23,7 @@ Block = {
     "Quad234": "\u259f"
 }
 
-Arrow = {
+arrow = {
     "Left": "\u2190",
     "Up": "\u2191",
     "Right": "\u2192",
@@ -35,7 +35,7 @@ Arrow = {
     "SouthEast": "\u2198"
 }
 
-BoxDrawing = {
+boxDrawing = {
     "Horizontal": "\u2500",
     "Vertical": "\u2502",
     "HorizontalDash": "\u2504",
@@ -57,7 +57,7 @@ BoxDrawing = {
     "ArcUpRight": "\u2570",
 }
 
-Braille = {
+braille = {
     "Blank": "\u2800",
     "Dots1": "\u2801",
     "Dots2": "\u2802",

@@ -4,23 +4,23 @@ import curses, time
 class ApplicationObject:
 
     def __init__(self):
-        self.AppWindow = bs_screen.Screen(curses.initscr())
-        self.AppWindow.InitScreen()
-        self.AppWindow.UseColour(bs_colourpair.ColourPair)
+        self.appWindow = bs_screen.Screen(curses.initscr())
+        self.appWindow.initScreen()
+        self.appWindow.useColour(bs_colourpair.colourPair)
 
-        self.DrawIntro()
-        self.AppWindow.Refresh()
-        self.AppWindow.GetChar()
+        self.drawIntro()
+        self.appWindow.refresh()
+        self.appWindow.getChar()
 
-        self.AppWindow.TerminateScreen()
+        self.appWindow.terminateScreen()
 
-    def DrawIntro(self):
-        ColumnLength = 4*20
+    def drawIntro(self):
+        columnLength = 4*20
         for row in range(32):
             for cidx, colour, char in zip(range(4), (1, 3, 2, 4), [0b001100, 0b101010, 0b111101, 0b111111]):
-                self.AppWindow.PlotBrailleRect(
-                    row, ColumnLength//4*cidx, row, ColumnLength//4*(cidx+1)-1, char,
-                    self.AppWindow.ColourPair(0, colour)
+                self.appWindow.plotBrailleRect(
+                    row, columnLength//4*cidx, row, columnLength//4*(cidx+1)-1, char,
+                    self.appWindow.colourPair(0, colour)
                 )
 
-App = ApplicationObject()
+app = ApplicationObject()
