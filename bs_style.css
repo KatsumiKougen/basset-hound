@@ -10,20 +10,23 @@ Header {
     height: 3;
 }
 
-BS_Canvas {
-    background: #241f31;
-    border: inner #241f31;
-}
-
 BS_CanvasContainer {
     border: round #45443a;
     width: auto;
     height: auto;
-    padding: 1;
+    padding: 1 3;
+    align: center middle;
 }
 
-BS_CanvasContainer > Label {
+BS_CanvasContainer BS_Canvas {
+    background: #241f31;
+    border: inner #13101b;
+    width: auto;
+}
+
+BS_CanvasContainer Label {
     color: #241f31;
     text-style: bold;
+    background: cadetblue;
     width: auto;
 }
