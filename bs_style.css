@@ -1,15 +1,25 @@
 Screen {
-    background: black;
-}
-
-Button#BS_ExitApp {
-    background: #FF5733;
-    color: white;
+    background: #5e5c64;
 }
 
 Header {
     background: #333333;
     color: white;
     text-align: center;
-    height: 2;
+    height: 3;
+}
+
+BS_Canvas {
+    background: #241f31;
+}
+
+BS_CanvasContainer {
+    border: round white;
+    width: auto;
+    height: auto;
+    padding: 1;
+}
+
+BS_CanvasContainer > Label {
+    text-style: bold;
 }
