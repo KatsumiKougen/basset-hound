@@ -3,10 +3,8 @@ Screen {
 }
 
 Button#BS_ExitApp {
-    background: #FF5733;   /* A bright color for the button */
-    color: white;           /* Button text color */
-    border-radius: 5px;     /* Rounded corners */
-    padding: 1, 2;          /* Button padding */
+    background: #FF5733;
+    color: white;
 }
 
 Header {
