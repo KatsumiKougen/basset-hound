@@ -15,11 +15,15 @@ class BS_Canvas(Static):
         self.styles.width = BS_canvasSize[0]
         self.styles.height = BS_canvasSize[1]
 
-class BS_CanvasContainer(Vertical):
+class BS_CanvasContainer(Container):
     
     def compose(self):
-        yield BS_Canvas()
-        yield Label(f"{BS_canvasSize[0]}x{BS_canvasSize[1]}, coord: ({BS_canvasCoordinate[0]}, {BS_canvasCoordinate[1]})")
+        yield Center(BS_Canvas())
+        yield Center(Label(f"{BS_canvasSize[0]}x{BS_canvasSize[1]}, coord: ({BS_canvasCoordinate[0]}, {BS_canvasCoordinate[1]})"))
+        yield Center(Label("doesn't seem right"))
+    
+    def on_mount(self):
+        self.styles.width = BS_canvasSize[0]
 
 class BS_AppObject(App):
     
