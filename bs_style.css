@@ -27,6 +27,5 @@ BS_CanvasContainer BS_Canvas {
 BS_CanvasContainer Label {
     color: #241f31;
     text-style: bold;
-    background: cadetblue;
     width: auto;
 }
