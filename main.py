@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import bs_colourpair, bs_char
 from textual.app import *
 from textual.widgets import *
