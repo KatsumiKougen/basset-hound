@@ -3,6 +3,8 @@ import textual
 
 class AppObject(textual.App):
     
-    
+    pass
 
-app = textual.App()
+if __name__ == "__main__":
+    app = AppObject()
+    app.run()
