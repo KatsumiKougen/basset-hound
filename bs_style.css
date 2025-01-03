@@ -1,5 +1,6 @@
 Screen {
-    background: #5e5c64;
+    background: #d3d4be;
+    align: center middle;
 }
 
 Header {
@@ -11,15 +12,18 @@ Header {
 
 BS_Canvas {
     background: #241f31;
+    border: inner #241f31;
 }
 
 BS_CanvasContainer {
-    border: round white;
+    border: round #45443a;
     width: auto;
     height: auto;
     padding: 1;
 }
 
 BS_CanvasContainer > Label {
+    color: #241f31;
     text-style: bold;
+    width: auto;
 }
